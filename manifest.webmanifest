@@ -1,0 +1,11 @@
+{
+  "name": "নূর আমল | Muslim Reminder",
+  "short_name": "নূর আমল",
+  "description": "বাংলায় কুরআন, হাদিস, নামাজ, কিবলা, তাসবিহ ও দৈনিক আমলের সঙ্গী",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f2f6f1",
+  "theme_color": "#14543b",
+  "lang": "bn"
+}
