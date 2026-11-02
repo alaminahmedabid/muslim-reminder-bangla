@@ -27,13 +27,37 @@ nav{position:fixed;bottom:0;left:0;right:0;background:var(--card);border-top:1px
 .notice{background:var(--soft);padding:10px;border-radius:12px;font-size:12px;color:var(--muted)}.actions{display:flex;gap:8px;flex-wrap:wrap}.hide{display:none!important}
 #quranResults{max-height:55vh;overflow:auto}.search{width:100%;max-width:none;margin-bottom:10px}
 @media(min-width:600px){.grid{grid-template-columns:repeat(6,1fr)}}
+
+/* Modern polished interface */
+:root{--bg:#f4f8f4;--card:#ffffff;--ink:#173b2b;--muted:#718477;--green:#176044;--green2:#2d805a;--gold:#d2a64f;--line:#dfe9e1;--soft:#edf5ee;--shadow:0 10px 28px rgba(20,70,48,.09)}
+body{background:radial-gradient(ellipse at 85% 0%,#e3f0e6 0,transparent 38%),var(--bg)}
+header{background:linear-gradient(125deg,#0d3426 0%,#176044 58%,#32835b 100%);box-shadow:0 8px 25px #0d342622}
+.brand{letter-spacing:-.35px}.tag{letter-spacing:1px}
+.card{border-radius:21px;box-shadow:var(--shadow);border-color:#e3ece4}
+.hero{padding:22px 16px;background:linear-gradient(145deg,#fff,#eff7ef);border:1px solid #dceadd}
+.prayer{padding:11px 3px;border:1px solid #dce9df;background:linear-gradient(160deg,#f4faf5,#e8f2e9)}
+.prayer b{color:#176044;font-size:14px}
+.tile{border-radius:18px;padding:15px 5px;background:linear-gradient(160deg,var(--card),var(--soft));transition:transform .18s,box-shadow .18s}
+.tile:active,.btn:active{transform:scale(.97)}
+.btn{background:linear-gradient(135deg,#176044,#2d805a);box-shadow:0 4px 10px #17604422}
+.tabs button.active{box-shadow:0 4px 12px #17604430}
+nav{box-shadow:0 -6px 22px #173b2b10;backdrop-filter:blur(12px)}
+.quick-reminders{display:grid;grid-template-columns:1fr;gap:10px;margin:13px 0}
+.quick-reminder{display:grid;grid-template-columns:1fr auto;gap:8px;align-items:center;background:linear-gradient(120deg,var(--card),var(--soft));border:1px solid var(--line);border-radius:17px;padding:12px;box-shadow:var(--shadow)}
+.quick-reminder .qr-title{font-weight:750;font-size:14px}.quick-reminder .qr-sub{font-size:11px;color:var(--muted)}
+.quick-reminder .qr-controls{display:flex;align-items:center;gap:7px}.quick-reminder input[type=time]{width:108px;padding:7px}.quick-reminder input[type=checkbox]{width:20px;height:20px}
+.quick-heading{display:flex;justify-content:space-between;align-items:center;margin:18px 2px 8px}.quick-heading h2{margin:0}
+@media(min-width:560px){.quick-reminders{grid-template-columns:repeat(3,1fr)}.quick-reminder{grid-template-columns:1fr}.quick-reminder .qr-controls{justify-content:space-between}}
+body.dark .quick-reminder{background:linear-gradient(120deg,#1b2b23,#24382d)}
 </style>
 </head>
 <body>
-<header><div class="head"><div><div class="brand"><img src="icons/icon-192.png" alt="" style="width:34px;height:34px;vertical-align:middle;border-radius:10px;margin-right:7px"> Muslim Reminder Bangla</div><div class="tag">MUSLIM REMINDER · প্রতিদিনের ইবাদতের সঙ্গী</div></div><div class="actions"><button id="themeBtn">☾ ডার্ক</button><button id="shareBtn">↗ শেয়ার</button><button onclick="showPanel('settings')">👤 প্রোফাইল</button></div></div></header>
+<header><div class="head"><div><div class="brand"><img src="icon-192.png" alt="" style="width:34px;height:34px;vertical-align:middle;border-radius:10px;margin-right:7px"> Muslim Reminder Bangla</div><div class="tag">MUSLIM REMINDER · প্রতিদিনের ইবাদতের সঙ্গী</div></div><div class="actions"><button id="themeBtn">☾ ডার্ক</button><button id="shareBtn">↗ শেয়ার</button><button onclick="showPanel('settings')">👤 প্রোফাইল</button></div></div></header>
 <div class="wrap">
 <section class="card hero"><div class="bism">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div><div id="dateText" style="font-weight:750;margin-top:8px"></div><div id="hijriText" class="gold small">হিজরি তারিখ লোড হচ্ছে…</div><p class="muted">আসসালামু আলাইকুম। আপনার প্রতিদিনের আমল সুন্দর হোক।</p></section>
 <section class="card"><div class="row"><div><div class="small">পরবর্তী নামাজ</div><div style="font-size:21px;font-weight:800" id="nextName">সময় হিসাব হচ্ছে</div><div class="muted" id="countdown">—</div></div><div style="text-align:right"><div class="small">আপনার শহর</div><select id="city"><option value="Barishal">বরিশাল</option><option value="Dhaka">ঢাকা</option><option value="Chattogram">চট্টগ্রাম</option><option value="Khulna">খুলনা</option><option value="Rajshahi">রাজশাহী</option><option value="Sylhet">সিলেট</option><option value="Mymensingh">ময়মনসিংহ</option></select></div></div><div class="prayers" id="prayerStrip"></div><div class="actions" style="margin-top:12px"><button class="btn alt" id="refreshPrayer">সময় আপডেট</button><button class="btn alt" onclick="showPanel('settings')">সময়/আজান সেটিংস</button></div><p class="small">নামাজের সময় AlAdhan সেবার মাধ্যমে শহর অনুযায়ী আনা হয়। ইন্টারনেট না থাকলে সর্বশেষ সংরক্ষিত সময় দেখাবে। স্থানীয় মসজিদের সময়ের সঙ্গে মিলিয়ে নেবেন।</p></section>
+<div class="quick-heading"><h2>🔔 আপনার দৈনিক রিমাইন্ডার</h2><span class="small">সময় ও চালু/বন্ধ</span></div>
+<div id="quickReminders" class="quick-reminders"></div>
 <h2>ইসলাম ও ইবাদত</h2><div class="grid">
 <button class="tile" onclick="showPanel('quran')"><span>📖</span>আল-কুরআন</button><button class="tile" onclick="showPanel('hadith')"><span>📜</span>হাদিস</button><button class="tile" onclick="showPanel('qibla')"><span>🧭</span>কিবলা</button><button class="tile" onclick="showPanel('tasbih')"><span>📿</span>তাসবিহ</button><button class="tile" onclick="showPanel('dua')"><span>🤲</span>দোয়া</button><button class="tile" onclick="showPanel('ruqyah')"><span>🛡️</span>রুকইয়াহ</button>
 </div>
@@ -90,7 +114,7 @@ function renderSurahs(list){let q=$('surahSearch').value.toLowerCase();$('quranR
 $('surahSearch').oninput=()=>{if(quranCache)renderSurahs(quranCache)};
 window.openSurah=async n=>{let box=$('quranResults');$('quranStatus').textContent='সূরা লোড হচ্ছে…';try{let cached=localStorage.getItem('nr-surah-'+n),data=cached?JSON.parse(cached):null;if(!data){let r=await fetch(`https://api.alquran.cloud/v1/surah/${n}/editions/quran-uthmani,bn.bengali`);if(!r.ok)throw Error();let j=await r.json();data=j.data;localStorage.setItem('nr-surah-'+n,JSON.stringify(data))}let ar=data[0].ayahs, bnvers=data[1].ayahs;box.innerHTML=`<button class="btn alt" onclick="loadQuran()">← সূরা তালিকা</button><h3 style="margin-top:12px">${data[0].name} — ${data[0].englishName}</h3>`+ar.map((a,i)=>`<div class="verse"><div class="arabic">${a.text} ۝${bn(a.numberInSurah)}</div><div class="translation">${bnvers[i]?.text||'বাংলা অনুবাদ পাওয়া যায়নি'}</div></div>`).join('');$('quranStatus').textContent='সূরা '+data[0].englishName;localStorage.setItem('nr-last-surah',n)}catch(e){$('quranStatus').textContent='এই সূরাটি আনতে ইন্টারনেট প্রয়োজন।'}}
 $('lastRead').onclick=()=>{let n=Number(localStorage.getItem('nr-last-surah')||1);openSurah(n)};
-$('testVoice').onclick=()=>{if(!('speechSynthesis'in window)){alert('এই ব্রাউজারে Text-to-Speech নেই');return}let u=new SpeechSynthesisUtterance($('voiceText').value);u.lang='bn-BD';u.rate=.9;speechSynthesis.cancel();speechSynthesis.speak(u)};
+$('testVoice').onclick=()=>{if(!('speechSynthesis'in window)){alert('এই ব্রাউজারে Text-to-Speech নেই');return}let u=new SpeechSynthesisUtterance('আসসালামু আলাইকুম। এখন আপনার আমলের সময়। তাওবা, দরুদ ও জিকিরের কথা স্মরণ করুন।');u.lang='bn-BD';u.rate=.9;speechSynthesis.cancel();speechSynthesis.speak(u)};
 ['voiceOn','interval','voiceText'].forEach(id=>{let e=$(id),v=localStorage.getItem('nr-'+id);if(v!==null){if(e.type==='checkbox')e.checked=v==='1';else e.value=v}e.onchange=()=>localStorage.setItem('nr-'+id,e.type==='checkbox'?(e.checked?'1':'0'):e.value)});
 $('notifPermission').onclick=async()=>{if(!('Notification'in window)){alert('এই ব্রাউজারে নোটিফিকেশন সমর্থিত নয়');return}alert('অনুমতি: '+await Notification.requestPermission())};
 $('findQibla').onclick=()=>{if(!navigator.geolocation){$('qiblaText').textContent='অবস্থান সুবিধা নেই';return}navigator.geolocation.getCurrentPosition(pos=>{let lat=pos.coords.latitude*Math.PI/180,lon=pos.coords.longitude*Math.PI/180,kaLat=21.4225*Math.PI/180,kaLon=39.8262*Math.PI/180,d=kaLon-lon,y=Math.sin(d),x=Math.cos(lat)*Math.tan(kaLat)-Math.sin(lat)*Math.cos(d),deg=(Math.atan2(y,x)*180/Math.PI+360)%360;$('qiblaDegree').textContent=Math.round(deg)+'°';$('qiblaText').textContent='উত্তর দিক থেকে ঘড়ির কাঁটার দিকে '+Math.round(deg)+'° (প্রায়)। অবস্থান পাওয়া গেছে।'},()=>{$('qiblaText').textContent='অবস্থান অনুমতি দিন এবং HTTPS সাইটে খুলুন'},{enableHighAccuracy:true,timeout:12000})};
@@ -99,16 +123,15 @@ $('exportReport').onclick=()=>{let lines=['তারিখ,নামাজ,জ�
 
 // Individual reminder scheduler (works while this web app is open).
 const reminderDefaults=[
-{id:'istighfar',label:'ইস্তিগফার করুন',time:'09:00',enabled:true},
-{id:'tawba',label:'তওবা করুন',time:'11:00',enabled:false},
-{id:'durood',label:'দরুদ শরিফ পড়ুন',time:'14:00',enabled:true},
-{id:'dhikr',label:'জিকির করুন',time:'16:00',enabled:true},
-{id:'quran',label:'কুরআন পড়ুন',time:'19:00',enabled:false},
-{id:'sleep',label:'ঘুমানোর দোয়া পড়ুন',time:'22:00',enabled:false}];
+{id:'tawba',label:'তাওবা রিমাইন্ডার',time:'08:00',enabled:true},
+{id:'durood',label:'দরুদ রিমাইন্ডার',time:'13:00',enabled:true},
+{id:'dhikr',label:'জিকির রিমাইন্ডার',time:'17:00',enabled:true},
+{id:'quran',label:'কুরআন তিলাওয়াত',time:'20:00',enabled:false},
+{id:'sleep',label:'ঘুমানোর দোয়া',time:'22:00',enabled:false}];
 let reminders=JSON.parse(localStorage.getItem('mrb-reminders')||'null')||reminderDefaults;
 function sayReminder(msg){
  if('speechSynthesis'in window){let u=new SpeechSynthesisUtterance(msg);u.lang='bn-BD';u.rate=.9;speechSynthesis.cancel();speechSynthesis.speak(u);}
- if('Notification'in window&&Notification.permission==='granted')new Notification('Muslim Reminder Bangla',{body:msg,icon:'icons/icon-192.png'});
+ if('Notification'in window&&Notification.permission==='granted')new Notification('Muslim Reminder Bangla',{body:msg,icon:'icon-192.png'});
 }
 function saveReminders(){localStorage.setItem('mrb-reminders',JSON.stringify(reminders));drawReminders();}
 function drawReminders(){
@@ -123,6 +146,16 @@ function drawReminders(){
  box.querySelectorAll('.rem-test').forEach(e=>e.onclick=()=>sayReminder(reminders[+e.dataset.i].label));
 }
 drawReminders();
+function drawQuickReminders(){
+ const box=document.getElementById('quickReminders');if(!box)return;
+ const ids=['tawba','durood','dhikr'];
+ box.innerHTML=ids.map(id=>{let i=reminders.findIndex(r=>r.id===id);if(i<0){let labels={tawba:'তাওবা রিমাইন্ডার',durood:'দরুদ রিমাইন্ডার',dhikr:'জিকির রিমাইন্ডার'};reminders.push({id,label:labels[id],time:'09:00',enabled:false});i=reminders.length-1;}let r=reminders[i];return `<div class="quick-reminder"><div><div class="qr-title">${r.label}</div><div class="qr-sub">নির্ধারিত সময়ে স্মরণ করিয়ে দেবে</div></div><div class="qr-controls"><input type="time" aria-label="${r.label} সময়" data-quick-time="${id}" value="${r.time}"><label title="চালু/বন্ধ"><input type="checkbox" data-quick-on="${id}" ${r.enabled?'checked':''}></label></div></div>`}).join('');
+ box.querySelectorAll('[data-quick-time]').forEach(e=>e.onchange=()=>{let r=reminders.find(x=>x.id===e.dataset.quickTime);r.time=e.value;saveReminders();});
+ box.querySelectorAll('[data-quick-on]').forEach(e=>e.onchange=()=>{let r=reminders.find(x=>x.id===e.dataset.quickOn);r.enabled=e.checked;saveReminders();});
+}
+drawQuickReminders();
+const oldSaveReminders=saveReminders;
+saveReminders=function(){oldSaveReminders();drawQuickReminders();};
 document.getElementById('addReminder')?.addEventListener('click',()=>{let v=document.getElementById('newReminderText').value.trim();if(!v)return alert('রিমাইন্ডারের নাম লিখুন');reminders.push({id:'custom'+Date.now(),label:v,time:'20:00',enabled:true});document.getElementById('newReminderText').value='';saveReminders();});
 let lastMinute='';
 setInterval(()=>{let d=new Date(),hh=String(d.getHours()).padStart(2,'0'),mm=String(d.getMinutes()).padStart(2,'0'),stamp=d.toDateString()+hh+mm;if(stamp===lastMinute)return;let due=reminders.filter(r=>r.enabled&&r.time===hh+':'+mm);if(due.length){lastMinute=stamp;due.forEach(r=>sayReminder(r.label));}},15000);

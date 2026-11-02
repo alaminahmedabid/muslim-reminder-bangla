@@ -1,16 +1,7 @@
-Muslim Reminder Bangla — আপডেটেড PWA প্যাকেজ
+Muslim Reminder Bangla – আপডেটেড ফাইল
 
-GitHub repository-র root-এ সব ফাইল ও icons ফোল্ডার আপলোড করুন।
-ফাইল: index.html, manifest.webmanifest, sw.js, icons/icon-192.png, icons/icon-512.png
+GitHub Pages-এ আপলোড করুন: index.html, manifest.webmanifest, sw.js, icon-192.png, icon-512.png। সব ফাইল রিপোজিটরির মূল জায়গায় (root) রাখবেন।
 
-নতুন সুবিধা:
-- 192px ও 512px অ্যাপ আইকন
-- পৃথক রিমাইন্ডার ON/OFF, সময়, টেস্ট, যোগ ও মুছে ফেলা
-- ডিভাইসে স্থানীয় প্রোফাইল নাম
-- আগের কুরআন, নামাজের সময়, তাসবিহ ও আমল রিপোর্ট
+এই সংস্করণে হোম পেজে তাওবা, দরুদ ও জিকিরের জন্য আলাদা সময় এবং ON/OFF সুইচ আছে। আইকন ফাইলও root-এ রাখা হয়েছে, যাতে মোবাইল থেকে আপলোড সহজ হয়।
 
-সীমাবদ্ধতা:
-- Gmail sign-in চালু করতে Firebase project ও OAuth configuration দরকার; এখানে ভুয়া লগইন নেই।
-- Reminder notification/voice এই ওয়েব অ্যাপ খোলা থাকা অবস্থায় কাজ করে; বন্ধ থাকলে background alarm নিশ্চিত নয়।
-- ডেটা এখনো এই ডিভাইসের localStorage-এ থাকে, cloud sync নয়।
-- সত্যিকারের APK ও নির্ভরযোগ্য background alarm-এর জন্য native Android wrapper প্রয়োজন।
+গুরুত্বপূর্ণ: এটি এখনও ওয়েব অ্যাপ/PWA। এই প্যাকেজ নিজে থেকে APK নয়। রিমাইন্ডার নির্ধারিত সময়ে কাজ করার জন্য অ্যাপ/ওয়েব অ্যাপ খোলা থাকতে হবে; বন্ধ থাকলে নির্ভরযোগ্য ব্যাকগ্রাউন্ড অ্যালার্ম নিশ্চিত নয়। Gmail লগইন চালু করতে Firebase Authentication সেটআপ ও কনফিগারেশন লাগবে।

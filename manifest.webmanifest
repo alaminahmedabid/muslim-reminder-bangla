@@ -1,25 +1,16 @@
 {
-  "name": "Muslim Reminder Bangla",
-  "short_name": "Muslim Reminder",
-  "description": "বাংলা ভাষাভাষীদের জন্য ইসলামিক দৈনন্দিন আমল ও রিমাইন্ডার",
-  "start_url": "./",
-  "scope": "./",
-  "display": "standalone",
-  "background_color": "#f2f6f1",
-  "theme_color": "#14543b",
-  "lang": "bn",
-  "icons": [
-    {
-      "src": "icons/icon-192.png",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "icons/icon-512.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any"
-    }
+  "name":"Muslim Reminder Bangla",
+  "short_name":"Muslim Reminder",
+  "description":"বাংলায় কুরআন, হাদিস, নামাজ ও দৈনিক আমলের সঙ্গী",
+  "start_url":"./",
+  "scope":"./",
+  "display":"standalone",
+  "orientation":"portrait",
+  "background_color":"#f4f8f4",
+  "theme_color":"#176044",
+  "lang":"bn",
+  "icons":[
+    {"src":"icon-192.png","sizes":"192x192","type":"image/png","purpose":"any"},
+    {"src":"icon-512.png","sizes":"512x512","type":"image/png","purpose":"any"}
   ]
 }
